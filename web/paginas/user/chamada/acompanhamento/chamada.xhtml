@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Acompanhamento de faltas
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Acompanhamento de faltas">
+                        <p:outputLabel value="Disciplina: #{chamadaMB.materia.nome_materia}"/><br/>
+                        <p:dataTable value="#{chamadaMB.alunos}" var="aluno" emptyMessage="Nenhum registro!">
+                            <p:column headerText="Aluno">
+                                <p:outputLabel value="#{aluno.aluno.nome}"/>
+                            </p:column>
+                            <p:column headerText="Faltas" width="10%">
+                                <p:outputLabel value="#{chamadaMB.ConsultaFaltas(aluno)}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <br/>
+                        <p:outputLabel value="Quantidade de aulas já ministradas: #{chamadaMB.quantidadeAulas()}"/>
+                        <br/><br/>
+                        <p:commandButton value="Retornar" action="#{chamadaMB.ListarTurmaAcompanhamento()}" immediate="true" ajax="false"/>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

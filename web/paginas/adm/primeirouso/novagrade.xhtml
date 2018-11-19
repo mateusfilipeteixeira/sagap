@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateLogin.xhtml">
+        <ui:define name="tituloJanela">
+            Adicionar nova grade de notas
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-2"/>
+                <div class="ui-g-8">
+                    <p:panel>
+                        <div>Nova grade de notas</div><br/><br/>
+                        <div>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        Descrição:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{configMB.grade.descricao}" required="true" requiredMessage="Campo requerido!"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Valor:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{configMB.grade.valor}" required="true" requiredMessage="Campo requerido!"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Peso:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{configMB.grade.peso}" required="true" requiredMessage="Campo requerido!"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div align="center">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <p:commandButton value="Salvar" action="#{configMB.adicionaNota()}" ajax="false"/>
+                                    </td>
+                                    <td>
+                                        <p:commandButton value="Cancelar" action="#{configMB.cancelarGrade()}" ajax="false" immediate="true"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

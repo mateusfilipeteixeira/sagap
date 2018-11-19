@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Gerenciamento de Alunos
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-2"/>
+                <div class="ui-g-2">
+                    <p:commandLink action="#{alunoMB.novo()}">
+                        <p:graphicImage url="/resources/images/add.jpg" width="140" height="140" title="Adicionar"/>
+                    </p:commandLink>
+                </div>
+                <div class="ui-g-2">
+                    <p:commandLink action="#{alunoMB.Listar()}">
+                        <p:graphicImage url="/resources/images/edit.png" width="140" height="140" title="Editar"/>
+                    </p:commandLink>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

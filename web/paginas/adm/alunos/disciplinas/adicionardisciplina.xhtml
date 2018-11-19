@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Adicionar nova disciplina
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-2"/>
+                <div class="ui-g-8">
+                    <p:panel>
+                        <div>Nova disciplina para o aluno #{turmaMB.alunotmp.nome}</div><br/><br/>
+                        <div>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        Disciplina:
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu value="#{turmaMB.aln.materia}" id="disciplina" converter="entityConverter">
+                                            <f:selectItem itemLabel="Selecione uma disciplina..." noSelectionOption="true"/>
+                                            <f:selectItems value="#{turmaMB.todasGradesMaterias}" var="grade" itemLabel="#{grade.nome_materia}"
+                                                           itemValue="#{grade}"/>
+                                            <p:ajax event="change" update="turma" listener="${turmaMB.AtualizarDados()}"/>
+                                        </p:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Turma:
+                                    </td>
+                                    <td>
+                                        <p:outputLabel id="turma">
+                                            #{turmaMB.cursotmp.nome} - #{turmaMB.turmatmp.periodo}
+                                        </p:outputLabel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div align="center">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <p:commandButton value="Salvar" action="#{turmaMB.SalvarNovaGrade()}" ajax="false"/>
+                                    </td>
+                                    <td>
+                                        <p:commandButton value="Cancelar" action="#{turmaMB.ListaGrade()}" ajax="false" immediate="true"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

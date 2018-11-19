@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>
+            <ui:insert name="tituloJanela"/>
+        </title>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/estilo.css"/>
+    </h:head>
+    <h:body>
+        <ui:include src="cabecalho.xhtml"/>
+        <h:form>
+            <div align="center">
+                <p:growl id="growl" life="5000" showDetail="true"/>
+                <div class="ui-g">
+                    <div class="ui-g-2" align="left">
+                    <ui:include src="menuuser.xhtml"/>
+                    </div>
+                    <div class="ui-g-10">
+                        <ui:insert name="conteudo"/>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <ui:include src="rodape.xhtml"/>
+    </h:body>
+</html>
+

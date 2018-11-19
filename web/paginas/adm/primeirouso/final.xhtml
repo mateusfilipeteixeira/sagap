@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateLogin.xhtml">
+        <ui:define name="tituloJanela">
+            Revisão dos dados de cadastro
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-2"/>
+                <div class="ui-g-8">
+                    <p:panel header="Revise os dados da instituição antes de prosseguir">
+                        <div class="ui-g-12">
+                            <p:panel>
+                                <div>
+                                    <table align="center">
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <b>Instituição</b><br/><br/>
+                                            </td>
+                                        </tr>                                            
+                                        <tr>
+                                            <td>
+                                                Nome:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.nome}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cnpj:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.cnpj}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Telefone:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.telefone}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </p:panel>
+                            <div class="ui-g-6">
+                                <p:panel>
+                                    <table align="center" width="100%">
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <b>Endereço</b><br/><br/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Endereço:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.logradouro}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Numero:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.numero}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Bairro:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.bairro}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Complemento:
+                                            </td>
+                                            <td>
+                                                #{configMB.instituicao.complemento}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Cidade:
+                                            </td>
+                                            <td>
+                                                #{configMB.cidade.nome}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </p:panel>
+                            </div>
+                            <div class="ui-g-6">
+                                <p:panel>
+                                    <div>
+                                        <table align="center">
+                                            <tr align="center">
+                                                <td colspan="2">
+                                                    <b>Grades</b><br/><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <p:dataTable var="grade" value="#{configMB.grades}">
+                                                        <p:column headerText="Descrição">
+                                                            <h:outputText value="#{grade.descricao}"/>
+                                                        </p:column>
+                                                        <p:column headerText="Valor">
+                                                            <h:outputText value="#{grade.valor}"/>
+                                                        </p:column>
+                                                        <p:column headerText="Peso">
+                                                            <h:outputText value="#{grade.peso}"/>
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </p:panel>
+                            </div>
+                        </div>
+                        <div align="center">
+                            <p:commandButton value="Confirmar" action="/paginas/adm/primeirouso/dadosusuario.xhtml?faces-redirect=true"/>
+                            <p:commandButton value="Revisar" action="/paginas/adm/primeirouso/index.xhtml"/>
+                        </div>
+                    </p:panel>
+                </div>
+            </div><br/><br/><br/>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Lançamento de notas
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Lançamento de notas">
+                        <p:dataTable value="#{notaMB.alunos}" var="aluno" emptyMessage="Nenhum registro!">
+                            <p:column headerText="Aluno">
+                                <p:outputLabel value="#{aluno.aluno.nome}"/>
+                            </p:column>
+                            <p:column headerText="Nota" width="10%">
+                                <div align="center">
+                                    <p:outputLabel value="#{notaMB.notaAluno(aluno)}"/>
+                                </div>
+                            </p:column>
+                            <p:column headerText="Aprovado" width="15%">
+                                <div align="center">
+                                    <p:outputLabel value="#{notaMB.aprovado(aluno)}"/>
+                                </div>
+                            </p:column>
+                            <p:column headerText="Ação" width="10%">
+                                <p:commandButton icon="ui-icon-pencil" action="#{notaMB.editarNota(aluno)}" ajax="false"/>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

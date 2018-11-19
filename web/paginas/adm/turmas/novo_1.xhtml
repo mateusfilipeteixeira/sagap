@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Nova turma
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Dados da Turma">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td>
+                                    Curso:
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{turmaMB.turma.curso}" required="true" 
+                                                     requiredMessage="Obrigatória seleção de um curso!"
+                                                     converter="entityConverter">
+                                        <f:selectItem noSelectionOption="true" itemLabel="Selecione um curso"/>
+                                        <f:selectItems value="#{turmaMB.cursos}" var="curso" itemLabel="#{curso.nome}"
+                                                       itemValue="#{curso}"/>
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Cadastro:
+                                </td>
+                                <td>
+                                    <p:selectOneRadio value="#{turmaMB.turma.ativo}">
+                                        <f:selectItem itemLabel="Ativo" itemValue="#{1}"/>
+                                        <f:selectItem itemLabel="Inativo" itemValue="#{0}"/>
+                                    </p:selectOneRadio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Período:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{turmaMB.turma.periodo}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/><br/>
+                        <div align="center">
+                            <p:commandButton value="Próximo" ajax="false" action="#{turmaMB.Grade()}"/>
+                            <p:commandButton value="Cancelar" immediate="true" ajax="false" action="#{turmaMB.Cancelar()}"/>
+                        </div>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

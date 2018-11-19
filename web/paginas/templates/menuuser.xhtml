@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <p:menu>
+        <p:submenu label="Sistema">
+            <p:menuitem value="Home" action="/paginas/user/index.xhtml?faces-redirect=true" ajax="false" immediate="true"
+                        icon="ui-icon-home" update=""/>
+        </p:submenu>
+        <p:submenu label="Aulas">
+            <p:menuitem value="Cadastro" action="#{aulaMB.NovaAula()}" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Manutenção" action="#{aulaMB.ListarAulas()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+        <p:submenu label="Chamada">
+            <p:menuitem value="Realizar chamada" update="" icon="ui-icon-calendar" ajax="false"
+                        action="#{chamadaMB.novaChamada()}" immediate="true"/>
+            <p:menuitem value="Manutenção" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true" action="#{chamadaMB.ListarTurma()}"/>
+            <p:menuitem value="Acompanhamento" update="" icon="ui-icon-check" ajax="false"
+                        immediate="true" action="#{chamadaMB.ListarTurmaAcompanhamento()}"/>
+        </p:submenu>
+        <p:submenu label="Notas">
+            <p:menuitem value="Lançamento" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true" action="#{notaMB.ListarTurmas()}"/>
+        </p:submenu>
+    </p:menu>
+</html>
+

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Nova aula
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Dados da Aula">
+                        <table>
+                            <tr>
+                                <td>
+                                    Disciplina:
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{aulaMB.aula.materia}" filter="true"
+                                                     filterMatchMode="startsWith" disabled="false" 
+                                                     converter="entityConverter">
+                                        <f:selectItems var="mat" value="#{aulaMB.materias}" itemLabel="#{mat.nome_materia} - #{mat.turma.curso.nome}"
+                                                       itemValue="#{mat}"/>
+                                        <p:ajax event="change" update="turma"/>
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Turma:
+                                </td>
+                                <td>
+                                    <p:outputLabel id="turma" value="#{aulaMB.aula.materia.turma.periodo} - #{aulaMB.aula.materia.turma.curso.nome}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tema:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{aulaMB.aula.tema}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Observação:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{aulaMB.aula.observacao}"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div align="center">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p:commandButton value="Salvar" action="#{aulaMB.SalvarAlteracoesAula()}" ajax="false"/>
+                                    </td>
+                                    <td>
+                                        <p:commandButton value="Replicar" action="#{aulaMB.SalvarAula()}" ajax="false"/>
+                                    </td>
+                                    <td>
+                                        <p:commandButton value="Cancelar" action="#{aulaMB.CancelarEdicao()}" immediate="true" ajax="false"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

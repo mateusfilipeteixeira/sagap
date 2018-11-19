@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#cabecalho{
+    background-color: #8BBF9F;
+    color: white;
+    height: 60px;
+    width: 100%;
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#usuario{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+#rodape{
+    background-color: #59344F;
+    color: white;
+    font-weight: bold;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#fundo{
+    background-color: #fef4bd;
+}
+
+.ui-dock-bottom{
+    margin-bottom: 40px;
+}
+
+.alignTop {
+    vertical-align:top;
+}

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Área do administrador
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <div class="ui-g-2">
+                        <p:commandLink action="/paginas/adm/alunos.xhtml">
+                            <p:graphicImage url="/resources/images/alunos.png" title="Alunos" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandLink action="/paginas/adm/professores.xhtml">
+                            <p:graphicImage url="/resources/images/professores.png" title="Professores" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandLink action="/paginas/adm/cursos.xhtml">
+                            <p:graphicImage url="/resources/images/curso.png" title="Curso" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandLink action="/paginas/adm/turmas.xhtml">
+                            <p:graphicImage url="/resources/images/turma.jpeg" title="Turma" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

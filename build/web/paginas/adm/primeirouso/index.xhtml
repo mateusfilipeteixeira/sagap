@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateLogin.xhtml">
+        <ui:define name="tituloJanela">
+            Configuração de uso
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+                    <p:panel>
+                        <div>
+                            Configuração do sistema
+                        </div>
+                        <br/><br/>
+                        <div>
+                            Este utilitário tem como finalidade a realização da configuração do sistema 
+                            de acordo com os parâmetros utilizados na instituição, afim de proporcionar
+                            melhor experiência do usuário com a utilização do sistema.
+                        </div>
+                        <br/><br/><br/>
+                        <p:commandButton value="Prosseguir" icon="ui-icon-confirm" action="#{configMB.inicio()}" ajax="false"
+                                         immediate="true"/>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

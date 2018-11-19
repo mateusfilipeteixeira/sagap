@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <p:menu>
+        <p:submenu label="Sistema" expanded="false">
+            <p:menuitem value="Home" action="/paginas/adm/index.xhtml?faces-redirect=true" icon="ui-icon-home" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+        <p:submenu label="Alunos" expanded="false">
+            <p:menuitem value="Cadastro" action="#{alunoMB.novo()}" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Manutenção" action="#{alunoMB.Listar()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Disciplinas" action="#{turmaMB.EditarDisciplinas()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+        <p:submenu label="Professores">
+            <p:menuitem value="Cadastro" action="#{professorMB.novo()}" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Manutenção" action="#{professorMB.Listar()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+        <p:submenu label="Curso">
+            <p:menuitem value="Cadastro" action="#{cursoMB.Novo()}" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Manutenção" action="#{cursoMB.Listar()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+        <p:submenu label="Turma">
+            <p:menuitem value="Cadastro" action="#{turmaMB.Nova()}" update="" icon="ui-icon-disk" ajax="false"
+                        immediate="true"/>
+            <p:menuitem value="Manutenção" action="#{turmaMB.ListarTurmas()}" update="" icon="ui-icon-pencil" ajax="false"
+                        immediate="true"/>
+        </p:submenu>
+    </p:menu>
+    <br/><br/><br/>
+</html>
+

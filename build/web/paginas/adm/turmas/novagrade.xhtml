@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Grade de matérias
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel>
+                        <div align="left">
+                            <p:commandLink action="#{turmaMB.AdicionarGrade()}">
+                                <p:graphicImage url="/resources/images/add.jpg" width="25" height="25" title="Nova"/>
+                            </p:commandLink>
+                        </div>
+                        <p:dataTable emptyMessage="Nenhum registro!" paginator="true" rows="10" paginatorPosition="bottom"
+                                     value="#{turmaMB.grades}" var="grade">
+                            <p:column headerText="Disciplina">
+                                <p:outputLabel value="#{grade.nome_materia}"/>
+                            </p:column>
+                            <p:column headerText="Professor">
+                                <p:outputLabel value="#{grade.professor.nome}"/>
+                            </p:column>
+                            <p:column headerText="Ação">
+                                <table align="center">
+                                    <tr align="center">
+                                        <td align="center">
+                                            <p:commandLink action="#{turmaMB.ExcluirGrade(grade)}">
+                                                <p:graphicImage url="/resources/images/delete.png" width="25" height="25" title="Excluir"
+                                                                onclick="if (!confirm('Confirma exclusão da grade?'))
+                                                                                return false"/>
+                                            </p:commandLink>
+                                        </td>
+                                        <td align="center">
+                                            <p:commandLink action="#{configMB.editarGrade(grade)}">
+                                                <p:graphicImage url="/resources/images/edit.png" width="25" height="25" title="Editar"/>
+                                            </p:commandLink>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </p:column>
+                        </p:dataTable>
+                        <div align="center">
+                            <br/><br/>
+                            <p:commandButton value="Próximo" disabled="#{turmaMB.ExisteGradeMat()}" 
+                                             action="#{turmaMB.AlunosTurma()}" ajax="false"/>
+                        </div>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

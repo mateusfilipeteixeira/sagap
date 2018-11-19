@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Manutenção de grade curricular
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <table width="100%">
+                        <tr>
+                            <td colspan="5">
+                                <p:selectOneRadio value="#{turmaMB.tipoBusca}">
+                                    <f:selectItem itemLabel="Código" itemValue="#{1}"/>
+                                    <f:selectItem itemLabel="CPF" itemValue="#{2}"/>
+                                    <f:selectItem itemLabel="Nome" itemValue="#{3}"/>
+                                </p:selectOneRadio>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <p:inputText value="#{turmaMB.busca}" placeholder="Insira sua busca aqui" size="50"/>
+                            </td>
+                            <td>
+                                <p:commandButton value="Buscar" action="#{turmaMB.Busca()}" update="tabela"/>
+                            </td>
+                            <td>
+                                <p:commandButton value="Todos" action="#{turmaMB.Todos()}" update="tabela"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="ui-g-1"/>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:dataTable id="tabela" emptyMessage="Nenhum registro." paginator="true" rows="10" paginatorPosition="bottom"
+                                 value="#{turmaMB.alunosCadastrados}" var="aln">
+                        <p:column headerText="Cod" width="7%">
+                            <p:outputLabel value="#{aln.seq_pessoa}"/>
+                        </p:column>
+                        <p:column headerText="Nome">
+                            <p:outputLabel value="#{aln.nome}"/>
+                        </p:column>
+                        <p:column headerText="CPF">
+                            <p:outputLabel value="#{aln.cpf}"/>
+                        </p:column>
+                        <p:column headerText="Telefone">
+                            <p:outputLabel value="#{aln.telefone}"/>
+                        </p:column>
+                        <p:column headerText="Cadastro">
+                            <p:outputLabel value="#{aln.dt_cadastro}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </p:outputLabel>
+                        </p:column>
+                        <p:column headerText="Ação">
+                            <p:commandButton icon="ui-icon-pencil" action="#{turmaMB.ListaGrade(aln)}"
+                                             ajax="false" onclick="true"/>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

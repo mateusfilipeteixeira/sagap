@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Editar aluno
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Dados do Aluno">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="20%">
+                                    Nome:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{alunoMB.aluno.nome}" size="55"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Telefone:
+                                </td>
+                                <td>
+                                    <p:inputMask value="#{alunoMB.aluno.telefone}" mask="(99) 9999-99999"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    RG:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{alunoMB.aluno.rg}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    CPF:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{alunoMB.aluno.cpf}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Data de nascimento:
+                                </td>
+                                <td>
+                                    <p:inputMask value="#{alunoMB.aluno.dt_nascimento}" mask="99/99/9999"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/><br/>
+                        <p:panel>
+                            <div align="center">
+                                Endereço<br/><br/>
+                            </div>
+                            <table align="center" width="100%">
+                                <tr>
+                                    <td>
+                                        Logradouro:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{alunoMB.aluno.logradouro}" size="50"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Número:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{alunoMB.aluno.numero}" size="15"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Bairro:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{alunoMB.aluno.bairro}" size="20"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Complemento:
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{alunoMB.aluno.complemento}" size="20"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cidade:
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu id="cidade" value="#{alunoMB.cidade}" filter="true"
+                                                         filterMatchMode="startsWith" disabled="false" 
+                                                         converter="entityConverter" required="true">
+                                            <f:selectItem itemLabel="Selecione uma cidade..." noSelectionOption="true"
+                                                          itemValue=""/>
+                                            <f:selectItems var="cid" value="#{cidadeMB.cidades}" itemLabel="#{cid.nome}"
+                                                           itemValue="#{cid}" actionListener="#{alunoMB.Estado()}"/>
+                                            <p:ajax event="change" update="est"/>
+                                        </p:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Estado:
+                                    </td>
+                                    <td>
+                                        <p:outputLabel id="est" value="#{alunoMB.estado}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p:panel>
+                        <br/><br/>
+                        <div align="center">
+                            <p:commandButton value="Confirmar" action="#{alunoMB.SalvarCadastroAluno()}" ajax="false"/>
+                            <p:commandButton value="Cancelar" action="#{alunoMB.CancelarEdicao()}" ajax="false" immediate="true"/>
+                        </div>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

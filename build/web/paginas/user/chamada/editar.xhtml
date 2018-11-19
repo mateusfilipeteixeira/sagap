@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Chamada
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Chamada">
+                        <p:dataTable value="#{chamadaMB.chamadas}" var="chamada" emptyMessage="Nenhum registro!">
+                            <p:column headerText="Aluno">
+                                <p:outputLabel value="#{chamada.aluno.nome}"/>
+                            </p:column>
+                            <p:column headerText="Presente" width="10%">
+                                <div align="center">
+                                    <p:selectBooleanCheckbox value="#{chamada.presenca}"/>
+                                </div>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/>
+                        <p:commandButton value="Finalizar chamada" action="#{chamadaMB.FinalizaAlteracaoChamada()}" ajax="false"/>
+                        <p:commandButton value="Cancelar" action="#{chamadaMB.novaChamada()}" immediate="true" ajax="false"/>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

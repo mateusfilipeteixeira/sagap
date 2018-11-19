@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Alteração de notas
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Alteração de notas">
+                        <div align="center">
+                            <p:outputLabel value="Aluno: #{notaMB.cadAluno.aluno.nome}"/>
+                        </div>
+                        <p:dataTable value="#{notaMB.notas}" var="nota" emptyMessage="Nenhum registro!">
+                            <p:column headerText="Nota">
+                                <p:outputLabel value="#{nota.grade_nota.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Valor sem peso">
+                                <div align="center">
+                                    <p:inputText value="#{nota.valor_sem_peso}"/>
+                                </div>
+                            </p:column>
+                            <p:column headerText="Peso" width="15%">
+                                <div align="center">
+                                    <p:outputLabel value="#{nota.grade_nota.peso}"/>
+                                </div>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/>
+                        <p:commandButton value="Finalizar" action="#{notaMB.salvarEdicao()}" ajax="false"/>
+                        <p:commandButton value="Cancelar" action="#{notaMB.SelecionaTurma(null)}" immediate="true" ajax="false"/>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

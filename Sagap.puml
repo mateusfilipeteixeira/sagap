@@ -1,0 +1,243 @@
+@startuml
+annotation java.lang.Override
+annotation javax.faces.bean.ManagedBean
+annotation javax.faces.bean.SessionScoped
+annotation javax.faces.convert.FacesConverter
+annotation javax.persistence.Id
+class br.com.sagap.controller.alunoMB
+class br.com.sagap.controller.cidadeMB
+class br.com.sagap.controller.configMB
+class br.com.sagap.controller.cursoMB
+class br.com.sagap.controller.loginMB
+class br.com.sagap.controller.professorMB
+class br.com.sagap.controller.turmaMB
+class br.com.sagap.dao.CidadeDao
+class br.com.sagap.dao.CursoDao
+class br.com.sagap.dao.EstadoDao
+class br.com.sagap.dao.GradeDao
+class br.com.sagap.dao.GradeMateriasDao
+class br.com.sagap.dao.InstituicaoDao
+class br.com.sagap.dao.PessoaDao
+class br.com.sagap.dao.TurmaDao
+class br.com.sagap.model.AlunoModel
+class br.com.sagap.model.CidadeModel
+class br.com.sagap.model.CursoModel
+class br.com.sagap.model.EstadoModel
+class br.com.sagap.model.GradeMateriasModel
+class br.com.sagap.model.GradeNotaModel
+class br.com.sagap.model.InstituicaoModel
+class br.com.sagap.model.PessoaModel
+class br.com.sagap.model.TurmaModel
+class br.com.sagap.util.Conexao
+class br.com.sagap.util.EntityConverter
+class br.com.sagap.util.Fabrica
+class br.com.sagap.util.UtilMensagens
+class java.lang.reflect.Field
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.sql.Statement
+class java.util.ArrayList
+class java.util.Date
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.faces.application.FacesMessage
+class javax.faces.component.UIComponent
+class javax.faces.context.FacesContext
+class javax.servlet.http.HttpSession
+class jdk.nashorn.internal.objects.NativeError
+interface java.io.Serializable
+interface javax.faces.convert.Converter
+br.com.sagap.controller.alunoMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.alunoMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.alunoMB ..> br.com.sagap.dao.PessoaDao
+br.com.sagap.controller.alunoMB ..> br.com.sagap.model.CidadeModel
+br.com.sagap.controller.alunoMB ..> br.com.sagap.model.PessoaModel
+br.com.sagap.controller.alunoMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.alunoMB ..> java.util.ArrayList
+br.com.sagap.controller.alunoMB --|> java.io.Serializable
+br.com.sagap.controller.cidadeMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.cidadeMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.cidadeMB ..> br.com.sagap.dao.CidadeDao
+br.com.sagap.controller.cidadeMB ..> br.com.sagap.dao.EstadoDao
+br.com.sagap.controller.cidadeMB ..> br.com.sagap.model.CidadeModel
+br.com.sagap.controller.cidadeMB ..> br.com.sagap.model.EstadoModel
+br.com.sagap.controller.cidadeMB ..> br.com.sagap.util.Fabrica
+br.com.sagap.controller.cidadeMB ..> java.util.ArrayList
+br.com.sagap.controller.cidadeMB --|> java.io.Serializable
+br.com.sagap.controller.configMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.configMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.configMB ..> br.com.sagap.dao.GradeDao
+br.com.sagap.controller.configMB ..> br.com.sagap.dao.InstituicaoDao
+br.com.sagap.controller.configMB ..> br.com.sagap.dao.PessoaDao
+br.com.sagap.controller.configMB ..> br.com.sagap.model.CidadeModel
+br.com.sagap.controller.configMB ..> br.com.sagap.model.GradeNotaModel
+br.com.sagap.controller.configMB ..> br.com.sagap.model.InstituicaoModel
+br.com.sagap.controller.configMB ..> br.com.sagap.model.PessoaModel
+br.com.sagap.controller.configMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.configMB ..> java.util.ArrayList
+br.com.sagap.controller.configMB ..> javax.faces.context.FacesContext
+br.com.sagap.controller.configMB ..> javax.servlet.http.HttpSession
+br.com.sagap.controller.configMB --|> java.io.Serializable
+br.com.sagap.controller.cursoMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.cursoMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.cursoMB ..> br.com.sagap.dao.CursoDao
+br.com.sagap.controller.cursoMB ..> br.com.sagap.dao.InstituicaoDao
+br.com.sagap.controller.cursoMB ..> br.com.sagap.model.CursoModel
+br.com.sagap.controller.cursoMB ..> br.com.sagap.model.InstituicaoModel
+br.com.sagap.controller.cursoMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.cursoMB ..> java.util.ArrayList
+br.com.sagap.controller.cursoMB --|> java.io.Serializable
+br.com.sagap.controller.loginMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.loginMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.loginMB ..> br.com.sagap.dao.PessoaDao
+br.com.sagap.controller.loginMB ..> br.com.sagap.model.PessoaModel
+br.com.sagap.controller.loginMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.loginMB ..> javax.faces.context.FacesContext
+br.com.sagap.controller.loginMB ..> javax.servlet.http.HttpSession
+br.com.sagap.controller.loginMB --|> java.io.Serializable
+br.com.sagap.controller.professorMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.professorMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.professorMB ..> br.com.sagap.dao.PessoaDao
+br.com.sagap.controller.professorMB ..> br.com.sagap.model.CidadeModel
+br.com.sagap.controller.professorMB ..> br.com.sagap.model.PessoaModel
+br.com.sagap.controller.professorMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.professorMB ..> java.util.ArrayList
+br.com.sagap.controller.professorMB --|> java.io.Serializable
+br.com.sagap.controller.turmaMB ..> javax.faces.bean.ManagedBean
+br.com.sagap.controller.turmaMB ..> javax.faces.bean.SessionScoped
+br.com.sagap.controller.turmaMB ..> br.com.sagap.dao.CursoDao
+br.com.sagap.controller.turmaMB ..> br.com.sagap.dao.GradeMateriasDao
+br.com.sagap.controller.turmaMB ..> br.com.sagap.dao.PessoaDao
+br.com.sagap.controller.turmaMB ..> br.com.sagap.dao.TurmaDao
+br.com.sagap.controller.turmaMB ..> br.com.sagap.model.AlunoModel
+br.com.sagap.controller.turmaMB ..> br.com.sagap.model.CursoModel
+br.com.sagap.controller.turmaMB ..> br.com.sagap.model.GradeMateriasModel
+br.com.sagap.controller.turmaMB ..> br.com.sagap.model.PessoaModel
+br.com.sagap.controller.turmaMB ..> br.com.sagap.model.TurmaModel
+br.com.sagap.controller.turmaMB ..> br.com.sagap.util.UtilMensagens
+br.com.sagap.controller.turmaMB ..> java.util.ArrayList
+br.com.sagap.controller.turmaMB --|> java.io.Serializable
+br.com.sagap.dao.CidadeDao ..> br.com.sagap.model.CidadeModel
+br.com.sagap.dao.CidadeDao ..> br.com.sagap.model.EstadoModel
+br.com.sagap.dao.CidadeDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.CidadeDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.CidadeDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.CidadeDao ..> java.sql.ResultSet
+br.com.sagap.dao.CidadeDao ..> java.sql.SQLException
+br.com.sagap.dao.CidadeDao ..> java.util.ArrayList
+br.com.sagap.dao.CidadeDao ..> java.util.logging.Level
+br.com.sagap.dao.CidadeDao ..> java.util.logging.Logger
+br.com.sagap.dao.CidadeDao --|> java.io.Serializable
+br.com.sagap.dao.CursoDao ..> br.com.sagap.model.CursoModel
+br.com.sagap.dao.CursoDao ..> br.com.sagap.model.InstituicaoModel
+br.com.sagap.dao.CursoDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.CursoDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.CursoDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.CursoDao ..> java.sql.ResultSet
+br.com.sagap.dao.CursoDao ..> java.sql.SQLException
+br.com.sagap.dao.CursoDao ..> java.util.ArrayList
+br.com.sagap.dao.CursoDao ..> java.util.logging.Level
+br.com.sagap.dao.CursoDao ..> java.util.logging.Logger
+br.com.sagap.dao.EstadoDao ..> br.com.sagap.model.EstadoModel
+br.com.sagap.dao.EstadoDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.EstadoDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.EstadoDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.EstadoDao ..> java.sql.ResultSet
+br.com.sagap.dao.EstadoDao ..> java.sql.SQLException
+br.com.sagap.dao.EstadoDao ..> java.util.ArrayList
+br.com.sagap.dao.EstadoDao ..> java.util.logging.Level
+br.com.sagap.dao.EstadoDao ..> java.util.logging.Logger
+br.com.sagap.dao.EstadoDao --|> java.io.Serializable
+br.com.sagap.dao.GradeDao ..> br.com.sagap.model.GradeNotaModel
+br.com.sagap.dao.GradeDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.GradeDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.GradeDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.GradeDao ..> java.sql.SQLException
+br.com.sagap.dao.GradeDao ..> java.util.logging.Level
+br.com.sagap.dao.GradeDao ..> java.util.logging.Logger
+br.com.sagap.dao.GradeMateriasDao ..> br.com.sagap.model.GradeMateriasModel
+br.com.sagap.dao.GradeMateriasDao ..> br.com.sagap.model.PessoaModel
+br.com.sagap.dao.GradeMateriasDao ..> br.com.sagap.model.TurmaModel
+br.com.sagap.dao.GradeMateriasDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.GradeMateriasDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.GradeMateriasDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.GradeMateriasDao ..> java.sql.ResultSet
+br.com.sagap.dao.GradeMateriasDao ..> java.sql.SQLException
+br.com.sagap.dao.GradeMateriasDao ..> java.util.ArrayList
+br.com.sagap.dao.GradeMateriasDao ..> java.util.logging.Level
+br.com.sagap.dao.GradeMateriasDao ..> java.util.logging.Logger
+br.com.sagap.dao.GradeMateriasDao --|> java.io.Serializable
+br.com.sagap.dao.InstituicaoDao ..> br.com.sagap.model.InstituicaoModel
+br.com.sagap.dao.InstituicaoDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.InstituicaoDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.InstituicaoDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.InstituicaoDao ..> java.sql.ResultSet
+br.com.sagap.dao.InstituicaoDao ..> java.sql.SQLException
+br.com.sagap.dao.InstituicaoDao ..> java.util.ArrayList
+br.com.sagap.dao.InstituicaoDao ..> java.util.logging.Level
+br.com.sagap.dao.InstituicaoDao ..> java.util.logging.Logger
+br.com.sagap.dao.InstituicaoDao ..> jdk.nashorn.internal.objects.NativeError
+br.com.sagap.dao.PessoaDao ..> br.com.sagap.model.CidadeModel
+br.com.sagap.dao.PessoaDao ..> br.com.sagap.model.PessoaModel
+br.com.sagap.dao.PessoaDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.PessoaDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.PessoaDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.PessoaDao ..> java.sql.ResultSet
+br.com.sagap.dao.PessoaDao ..> java.sql.SQLException
+br.com.sagap.dao.PessoaDao ..> java.util.ArrayList
+br.com.sagap.dao.PessoaDao ..> java.util.logging.Level
+br.com.sagap.dao.PessoaDao ..> java.util.logging.Logger
+br.com.sagap.dao.TurmaDao ..> br.com.sagap.model.CursoModel
+br.com.sagap.dao.TurmaDao ..> br.com.sagap.model.TurmaModel
+br.com.sagap.dao.TurmaDao ..> br.com.sagap.util.Conexao
+br.com.sagap.dao.TurmaDao ..> br.com.sagap.util.Fabrica
+br.com.sagap.dao.TurmaDao ..> java.sql.PreparedStatement
+br.com.sagap.dao.TurmaDao ..> java.sql.ResultSet
+br.com.sagap.dao.TurmaDao ..> java.sql.SQLException
+br.com.sagap.dao.TurmaDao ..> java.util.ArrayList
+br.com.sagap.dao.TurmaDao ..> java.util.logging.Level
+br.com.sagap.dao.TurmaDao ..> java.util.logging.Logger
+br.com.sagap.dao.TurmaDao --|> java.io.Serializable
+br.com.sagap.model.AlunoModel ..> javax.persistence.Id
+br.com.sagap.model.AlunoModel ..> java.util.Date
+br.com.sagap.model.AlunoModel --|> java.io.Serializable
+br.com.sagap.model.CidadeModel ..> javax.persistence.Id
+br.com.sagap.model.CidadeModel --|> java.io.Serializable
+br.com.sagap.model.CursoModel ..> javax.persistence.Id
+br.com.sagap.model.CursoModel ..> java.util.Date
+br.com.sagap.model.CursoModel --|> java.io.Serializable
+br.com.sagap.model.EstadoModel ..> javax.persistence.Id
+br.com.sagap.model.EstadoModel --|> java.io.Serializable
+br.com.sagap.model.GradeMateriasModel ..> javax.persistence.Id
+br.com.sagap.model.GradeMateriasModel ..> java.util.Date
+br.com.sagap.model.GradeNotaModel ..> javax.persistence.Id
+br.com.sagap.model.GradeNotaModel --|> java.io.Serializable
+br.com.sagap.model.InstituicaoModel ..> javax.persistence.Id
+br.com.sagap.model.InstituicaoModel --|> java.io.Serializable
+br.com.sagap.model.PessoaModel ..> javax.persistence.Id
+br.com.sagap.model.PessoaModel ..> java.util.Date
+br.com.sagap.model.PessoaModel --|> java.io.Serializable
+br.com.sagap.model.TurmaModel ..> javax.persistence.Id
+br.com.sagap.model.TurmaModel ..> java.util.Date
+br.com.sagap.util.Conexao ..> java.sql.Connection
+br.com.sagap.util.Conexao ..> java.sql.DriverManager
+br.com.sagap.util.Conexao ..> java.sql.SQLException
+br.com.sagap.util.Conexao ..> java.sql.Statement
+br.com.sagap.util.Conexao --|> java.io.Serializable
+br.com.sagap.util.EntityConverter ..> java.lang.Override
+br.com.sagap.util.EntityConverter ..> javax.faces.convert.FacesConverter
+br.com.sagap.util.EntityConverter ..> javax.persistence.Id
+br.com.sagap.util.EntityConverter ..> java.lang.reflect.Field
+br.com.sagap.util.EntityConverter ..> javax.faces.component.UIComponent
+br.com.sagap.util.EntityConverter ..> javax.faces.context.FacesContext
+br.com.sagap.util.EntityConverter --|> javax.faces.convert.Converter
+br.com.sagap.util.Fabrica ..> java.sql.SQLException
+br.com.sagap.util.Fabrica ..> java.util.logging.Level
+br.com.sagap.util.Fabrica ..> java.util.logging.Logger
+br.com.sagap.util.Fabrica --|> java.io.Serializable
+br.com.sagap.util.UtilMensagens ..> javax.faces.application.FacesMessage
+br.com.sagap.util.UtilMensagens ..> javax.faces.context.FacesContext
+@enduml

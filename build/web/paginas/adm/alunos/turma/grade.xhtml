@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Grade de alunos
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel>
+                        <div align="left">
+                            <p:commandLink action="#{turmaMB.AdicionarAluno()}">
+                                <p:graphicImage url="/resources/images/add.jpg" width="25" height="25" title="Nova"/>
+                            </p:commandLink>
+                        </div>
+                        <p:dataTable emptyMessage="Nenhum registro!" paginator="true" rows="10" paginatorPosition="bottom"
+                                     value="#{turmaMB.alunos}" var="aluno">
+                            <p:column headerText="Aluno">
+                                <p:outputLabel value="#{aluno.aluno.nome}"/>
+                            </p:column>
+                            <p:column headerText="Disciplina">
+                                <p:outputLabel value="#{aluno.materia.nome_materia}"/>
+                            </p:column>
+                            <p:column headerText="Tipo">
+                                <p:outputLabel value="#{turmaMB.RetornoTipo(aluno)}"/>
+                            </p:column>
+                            <p:column headerText="Ação">
+                                <p:commandLink action="#{turmaMB.ExcluirAluno(aluno)}">
+                                    <p:graphicImage url="/resources/images/delete.png" width="25" height="25" title="Excluir"
+                                                    onclick="if (!confirm('Confirma exclusão da grade?'))
+                                                                            return false"/>
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/><br/>
+                        <p:commandButton value="Gravar" action="#{turmaMB.SalvarMateriasAluno()}"/>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

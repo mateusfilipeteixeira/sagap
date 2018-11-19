@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Novo curso
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Dados do Curso">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="20%">
+                                    Instituição:
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{cursoMB.curso.instituicao}" converter="entityConverter"
+                                                     required="true" requiredMessage="Campo instituição é obrigatório!">
+                                        <f:selectItems var="inst" value="#{cursoMB.instituicoes}" itemLabel="#{inst.nome}"
+                                                       itemValue="#{inst}"/>
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Nome do Curso:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{cursoMB.curso.nome}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Descrição:
+                                </td>
+                                <td>
+                                    <p:inputText value="#{cursoMB.curso.descricao}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Cadastro:
+                                </td>
+                                <td>
+                                    <p:selectOneRadio value="#{cursoMB.curso.ativo}">
+                                        <f:selectItem itemLabel="Ativo" itemValue="#{1}"/>
+                                        <f:selectItem itemLabel="Inativo" itemValue="#{0}"/>
+                                    </p:selectOneRadio>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/><br/>
+                        <div align="center">
+                            <p:commandButton value="Salvar" ajax="false" action="#{cursoMB.SalvarCurso()}"/>
+                            <p:commandButton value="Cancelar" action="#{cursoMB.Listar()}" immediate="true" ajax="false"/>
+                        </div>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

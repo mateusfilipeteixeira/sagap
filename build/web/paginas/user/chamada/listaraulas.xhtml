@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Seleção de aula
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel header="Aulas">
+                        <p:dataTable id="tabela" emptyMessage="Nenhum registro." paginator="true" rows="10" paginatorPosition="bottom"
+                                     value="#{chamadaMB.aulas}" var="aula">
+                            <p:column headerText="Tema">
+                                <p:outputLabel value="#{aula.tema}"/>
+                            </p:column>
+                            <p:column headerText="Data">
+                                <p:outputLabel value="#{aula.data}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </p:outputLabel>
+                            </p:column>
+                            <p:column headerText="Observação">
+                                <p:outputLabel value="#{aula.observacao}"/>
+                            </p:column>
+                            <p:column headerText="Ação">
+                                <p:commandButton value="Selecionar" action="#{chamadaMB.EditarChamada(aula)}"
+                                                 ajax="false" onclick="true"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                    <br/><br/><br/>
+                </div>
+                <div class="ui-g-1"/>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateuser.xhtml">
+        <ui:define name="tituloJanela">
+            Área do professor
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <div class="ui-g-2">
+                        <p:commandLink action="/paginas/user/aulas.xhtml?faces-redirect=true">
+                            <p:graphicImage url="/resources/images/aula1.png" title="Aulas" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandLink action="#{chamadaMB.ListarTurma()}">
+                            <p:graphicImage url="/resources/images/chamada.png" title="Chamada" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandLink action="#{notaMB.ListarTurmas()}">
+                            <p:graphicImage url="/resources/images/notas.png" title="Notas" width="120" height="120"/>
+                        </p:commandLink>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/paginas/templates/templateadm.xhtml">
+        <ui:define name="tituloJanela">
+            Manutenção da grade curricular
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-1"/>
+                <div class="ui-g-10">
+                    <p:panel>
+                        <p:outputLabel value="Manutenção da grade curricular do aluno #{turmaMB.alunotmp.nome}"/>
+                        <div align="left">
+                            <p:commandLink action="#{turmaMB.AdicionarGradeCurricular()}">
+                                <p:graphicImage url="/resources/images/add.jpg" width="25" height="25" title="Nova"/>
+                            </p:commandLink>
+                        </div>
+                        <p:dataTable id="tabela" emptyMessage="Nenhum registro." paginator="true" rows="10" paginatorPosition="bottom"
+                                     value="#{turmaMB.materiasAluno}" var="mat">
+                            <p:column headerText="Disciplina">
+                                <p:outputLabel value="#{mat.materia.nome_materia}"/>
+                            </p:column>
+                            <p:column headerText="Professor">
+                                <p:outputLabel value="#{mat.materia.professor.nome}"/>
+                            </p:column>
+                            <p:column headerText="Período">
+                                <p:outputLabel value="#{mat.materia.turma.periodo}"/>
+                            </p:column>
+                            <p:column headerText="Curso">
+                                <p:outputLabel value="#{mat.materia.turma.curso.nome}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/><br/>
+                        <p:commandButton value="Salvar" ajax="false" action="#{turmaMB.SalvarAlteracoesGrade()}"/>
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="#{turmaMB.GradeCurricular()}"/>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

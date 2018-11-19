@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/paginas/templates/templateLogin.xhtml">
+        <ui:define name="tituloJanela">
+            Configuração grade de notas
+        </ui:define>
+        <ui:define name="conteudo">
+            <div class="ui-g-12">
+                <div class="ui-g-2"/>
+                <div class="ui-g-8">
+                    <p:panel>
+                        <div align="left">
+                            <p:commandLink action="#{configMB.nova()}">
+                                <p:graphicImage url="/resources/images/add.jpg" width="25" height="25" title="Nova"/>
+                            </p:commandLink>
+                        </div>
+                        <p:dataTable var="grade" value="#{configMB.grades}" emptyMessage="Nenhuma grade inserida ainda!"
+                                     paginator="true" rows="5" paginatorPosition="bottom">
+                            <p:column headerText="Descrição">
+                                <h:outputText value="#{grade.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{grade.valor}"/>
+                            </p:column>
+                            <p:column headerText="Peso">
+                                <h:outputText value="#{grade.peso}"/>
+                            </p:column>
+                            <p:column headerText="Ação">
+                                <table align="center">
+                                    <tr align="center">
+                                        <td align="center">
+                                            <p:commandLink action="#{configMB.excluirGrade(grade)}">
+                                                <p:graphicImage url="/resources/images/delete.png" width="25" height="25" title="Excluir"
+                                                                onclick="if (!confirm('Confirma exclusão da grade?')) return false"/>
+                                            </p:commandLink>
+                                        </td>
+                                        <td align="center">
+                                            <p:commandLink action="#{configMB.editarGrade(grade)}">
+                                                <p:graphicImage url="/resources/images/edit.png" width="25" height="25" title="Editar"/>
+                                            </p:commandLink>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </p:column>
+                        </p:dataTable><br/><br/>
+                        <p:outputLabel value="Somatório das notas da grade: #{configMB.notafinal}"/><br/><br/>
+                        <p:commandButton value="Prosseguir" disabled="#{configMB.botao}" action="#{configMB.revisaDados()}"/>
+                    </p:panel>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+
